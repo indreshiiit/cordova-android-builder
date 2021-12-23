@@ -1,6 +1,6 @@
 FROM openjdk:8
 
-LABEL maintainer="Hamdi Fourati <contact@hamdifourati.info>"
+LABEL maintainer="indresh <indresh@vidu.tech>"
 
 WORKDIR /opt/src
 
@@ -9,8 +9,11 @@ ENV ANDROID_SDK_ROOT /usr/local/android-sdk-linux
 ENV GRADLE_USER_HOME /opt/gradle
 ENV PATH $PATH:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$GRADLE_USER_HOME/bin
 
+# installing java stuff
+RUN apt install -y openjdk-8-jdk-headless openjdk-8-jre-headless maven ant gradle --no-install-recommends
+
 # NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_12.16.3 | bash -
 RUN apt -qq install -y nodejs
 
 # Cordova
